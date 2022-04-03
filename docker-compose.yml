@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=bosque_core
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./db:/var/lib/postgresql/data
+
+
