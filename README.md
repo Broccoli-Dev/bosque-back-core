@@ -73,16 +73,30 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 Nest is [MIT licensed](LICENSE).
 
 ## Comandos Docker
-npm i pg
-docker-compose up -d db
-docker-compose logs -f db
-docker-compose exec db bash
+```bash
+#
+$ docker-compose up -d db
+
+#
+$ docker-compose logs -f db
+
+#
+$ docker-compose exec db bash
   psql -h localhost -d bosque_core -U root
     \d+
     \q
   exit
-docker ps
-docker inspect ----
-docker-compose ps
-docker-compose down
-npm i --save config
+
+#
+$ docker ps
+
+#
+$ docker inspect ----
+
+#
+$ docker-compose ps
+
+#
+$ docker-compose down
+```
+
