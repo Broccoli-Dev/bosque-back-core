@@ -12,4 +12,10 @@ services:
     volumes:
       - ./db:/var/lib/postgresql/data
 
-
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=bosque@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=123456
+    ports:
+      - '5050:80'
