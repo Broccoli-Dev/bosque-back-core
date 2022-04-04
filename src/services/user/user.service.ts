@@ -19,9 +19,6 @@ export class UsersService {
   ) {}
 
   findAll() {
-    const apiKey = this.configService.get('API_KEY');
-    const dbName = this.configService.get('POSTGRES_DB');
-    console.log(apiKey, dbName);
     return this.userRepo.find();
   }
 
