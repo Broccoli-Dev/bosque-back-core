@@ -5,8 +5,9 @@ import {
   Put,
   Delete,
   Param,
-  ParseIntPipe,
   Body,
+  UseGuards,
+  Inject,
 } from '@nestjs/common';
 import {
   CreateUserRequest,
@@ -14,6 +15,9 @@ import {
 } from 'src/requests/user.request';
 import { UsersService } from 'src/services/user/user.service';
 
+import { ApiKeyGuard } from '../../auth/guards/api-key.guard';
+
+@UseGuards(ApiKeyGuard)
 @Controller('user')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
@@ -24,7 +28,7 @@ export class UsersController {
   }
 
   @Get(':document')
-  getUser(@Param('document') document: string){
+  getUser(@Param('document') document: string) {
     return this.usersService.findOne(document);
   }
 
@@ -35,7 +39,7 @@ export class UsersController {
 
   @Put(':document')
   UpdateUser(
-    @Param('document') document: string ,
+    @Param('document') document: string,
     @Body() payload: UpdateUserRequest,
   ) {
     return this.usersService.update(document, payload);
