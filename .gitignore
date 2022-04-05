@@ -37,4 +37,6 @@ lerna-debug.log*
 .env
 stag.env
 prod.env
+package-lock.json
 /db
+/database
