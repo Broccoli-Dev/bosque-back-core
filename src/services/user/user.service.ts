@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { Client } from 'pg';
+import * as bcrypt from 'bcrypt';
 
 import { User } from 'src/entities/user.entity';
 import {
@@ -30,8 +31,14 @@ export class UsersService {
     return user;
   }
 
+  findByEmail(email: string){
+    return this.userRepo.findOne({ where: { email } });
+  }
+
   async create(data: CreateUserRequest) {
     const newUser = this.userRepo.create(data);
+    const hashPassword = await bcrypt.hash(newUser.password, 10);
+    newUser.password = hashPassword;
     return this.userRepo.save(newUser);
   }
 

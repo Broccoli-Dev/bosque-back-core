@@ -1,19 +1,14 @@
-import {
-  Entity,
-  Column,
-  PrimaryColumn,
-} from 'typeorm';
+import { Entity, Column, PrimaryColumn } from 'typeorm';
 
 @Entity()
 export class User {
-
   @PrimaryColumn({ type: 'varchar', length: 255 })
   document: string;
 
   @Column({ type: 'varchar', length: 255 })
   email: string;
 
-  @Column({ type: 'varchar', length: 20 })
+  @Column({ type: 'varchar', length: 200})
   password: string;
 
   @Column({ type: 'varchar', length: 255 })
@@ -24,5 +19,4 @@ export class User {
 
   @Column({ type: 'varchar', length: 150 })
   nick: string;
-
 }
