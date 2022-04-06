@@ -4,15 +4,11 @@ import * as Joi from 'joi';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersController } from './controllers/user/user.controller';
 import { enviroments } from './enviroments';
-import { UsersService } from './services/user/user.service';
 import { UsersModule } from './modules/user.module';
 import config from './config';
 import { DatabaseModule } from './modules/database.module';
-import { AuthService } from './services/auth/auth.service';
 import { AuthModule } from './modules/auth.module';
-import { AuthController } from './controllers/auth/auth.controller';
 
 @Module({
   imports: [
@@ -22,6 +18,7 @@ import { AuthController } from './controllers/auth/auth.controller';
       isGlobal: true,
       validationSchema: Joi.object({
         API_KEY: Joi.string().required(),
+        JWT_SECRET: Joi.string().required(),
         POSTGRES_DB: Joi.string().required(),
         POSTGRES_PORT: Joi.number().required(),
       }),
@@ -30,7 +27,7 @@ import { AuthController } from './controllers/auth/auth.controller';
     DatabaseModule,
     AuthModule,
   ],
-  controllers: [AppController, AuthController],
-  providers: [AppService, AuthService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}

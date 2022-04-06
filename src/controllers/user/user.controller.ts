@@ -7,8 +7,9 @@ import {
   Param,
   Body,
   UseGuards,
-  Inject,
 } from '@nestjs/common';
+import { Public } from 'src/auth/decorators/public.decorator';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import {
   CreateUserRequest,
   UpdateUserRequest,
@@ -18,10 +19,12 @@ import { UsersService } from 'src/services/user/user.service';
 import { ApiKeyGuard } from '../../auth/guards/api-key.guard';
 
 @UseGuards(ApiKeyGuard)
+@UseGuards(JwtAuthGuard)
 @Controller('user')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  @Public()
   @Get()
   getAllUsers() {
     return this.usersService.findAll();

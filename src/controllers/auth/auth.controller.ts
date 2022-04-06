@@ -3,12 +3,16 @@ import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiKeyGuard } from 'src/auth/guards/api-key.guard';
 
+import { AuthService } from '../../services/auth/auth.service';
+import { User } from '../../entities/user.entity';
 @UseGuards(ApiKeyGuard)
 @UseGuards(AuthGuard('local'))
 @Controller('auth')
 export class AuthController {
+  constructor(private authService: AuthService){}
+  @UseGuards(AuthGuard('local'))
   @Post('login')
   login(@Req() req: Request) {
-    return req.user;
+    return this.authService.generateJWT( req.user as User );
   }
 }
