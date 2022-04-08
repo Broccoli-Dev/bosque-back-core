@@ -1,3 +1,5 @@
+// Core Imports
+
 import { Injectable, NotFoundException, Inject } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -5,11 +7,13 @@ import { ConfigService } from '@nestjs/config';
 import { Client } from 'pg';
 import * as bcrypt from 'bcrypt';
 
-import { User } from 'src/entities/user.entity';
+// Code Imports
+
+import { User } from '../../entities/user.entity';
 import {
   CreateUserRequest,
   UpdateUserRequest,
-} from 'src/requests/user.request';
+} from '../../requests/user.request';
 
 @Injectable()
 export class UsersService {

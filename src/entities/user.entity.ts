@@ -1,4 +1,6 @@
+// Core Imports
 import { Entity, Column, PrimaryColumn } from 'typeorm';
+// Code Imports
 
 @Entity()
 export class User {

@@ -1,7 +1,9 @@
+// Core Imports
 import { Controller, Post, Req, UseGuards } from '@nestjs/common';
 import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
-import { ApiKeyGuard } from 'src/auth/guards/api-key.guard';
+// Code Imports
+import { ApiKeyGuard } from '../../auth/guards/api-key.guard';
 
 import { AuthService } from '../../services/auth/auth.service';
 import { User } from '../../entities/user.entity';

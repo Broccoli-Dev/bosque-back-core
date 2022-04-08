@@ -1,3 +1,4 @@
+// Core Imports
 import {
   IsString,
   IsNotEmpty,
@@ -6,7 +7,7 @@ import {
   IsOptional,
 } from 'class-validator';
 import { PartialType, ApiProperty } from '@nestjs/swagger';
-
+// Code Imports
 export class CreateUserRequest {
   @IsString()
   @IsNotEmpty()

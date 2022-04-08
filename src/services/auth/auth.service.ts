@@ -1,9 +1,14 @@
+// Core Imports
+
 import { Injectable } from '@nestjs/common';
-import { UsersService } from '../../services/user/user.service';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { User } from '../../entities/user.entity'
 import { PayloadToken } from 'src/models/token.model';
+
+// Code Imports
+
+import { UsersService } from '../../services/user/user.service';
 
 @Injectable()
 export class AuthService {

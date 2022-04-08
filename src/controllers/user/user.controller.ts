@@ -1,3 +1,4 @@
+// Core Imports
 import {
   Controller,
   Get,
@@ -14,9 +15,9 @@ import {
   CreateUserRequest,
   UpdateUserRequest,
 } from 'src/requests/user.request';
-import { UsersService } from 'src/services/user/user.service';
-
+// Code imports
 import { ApiKeyGuard } from '../../auth/guards/api-key.guard';
+import { UsersService } from '../../services/user/user.service';
 
 @UseGuards(ApiKeyGuard)
 @UseGuards(JwtAuthGuard)

@@ -1,9 +1,10 @@
+// Core Imports
 import { Module, Global } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Client } from 'pg';
+// Code Imports
 import config from '../config';
-
 const API_KEY = '12345634';
 const API_KEY_PROD = 'PROD1212121SA';
 

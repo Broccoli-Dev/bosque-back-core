@@ -1,14 +1,15 @@
+// Core Imports
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
-
+// Code Imports
+import { DatabaseModule } from './modules/database.module';
+import { AuthModule } from './modules/auth.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { enviroments } from './enviroments';
 import { UsersModule } from './modules/user.module';
 import config from './config';
-import { DatabaseModule } from './modules/database.module';
-import { AuthModule } from './modules/auth.module';
 
 @Module({
   imports: [
