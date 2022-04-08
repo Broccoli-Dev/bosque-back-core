@@ -4,7 +4,6 @@ import { Request } from 'express';
 import { AuthGuard } from '@nestjs/passport';
 // Code Imports
 import { ApiKeyGuard } from '../../auth/guards/api-key.guard';
-
 import { AuthService } from '../../services/auth/auth.service';
 import { User } from '../../entities/user.entity';
 @UseGuards(ApiKeyGuard)
