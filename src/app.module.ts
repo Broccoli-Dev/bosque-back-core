@@ -1,18 +1,17 @@
+// Core Imports
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
-
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { UsersController } from './controllers/user/user.controller';
-import { enviroments } from './enviroments';
-import { UsersService } from './services/user/user.service';
-import { UsersModule } from './modules/user.module';
-import config from './config';
+// Code Imports
 import { DatabaseModule } from './modules/database.module';
 import { AuthService } from './services/auth/auth.service';
 import { AuthModule } from './modules/auth.module';
 import { AuthController } from './controllers/auth/auth.controller';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { enviroments } from './enviroments';
+import { UsersModule } from './modules/user.module';
+import config from './config';
 
 @Module({
   imports: [

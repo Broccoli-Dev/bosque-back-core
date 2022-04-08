@@ -1,6 +1,11 @@
+// Core Imports
+
 import { Injectable } from '@nestjs/common';
-import { UsersService } from '../../services/user/user.service';
 import * as bcrypt from 'bcrypt';
+
+// Code Imports
+
+import { UsersService } from '../../services/user/user.service';
 
 @Injectable()
 export class AuthService {
