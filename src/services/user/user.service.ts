@@ -20,11 +20,16 @@ export class UsersService {
   constructor(
     private configService: ConfigService,
     @Inject('PG') private clientPg: Client,
-    @InjectRepository(User) private userRepo: Repository<User>,
+    @InjectRepository(User) private userRepo: Repository<User>
   ) {}
 
-  findAll() {
-    return this.userRepo.find();
+  async findAll() {
+    let users = await this.userRepo.find();
+    users.map((element) => {
+      delete element.password;
+      return element;
+    });
+    return users;
   }
 
   async findOne(document: string) {
@@ -32,27 +37,40 @@ export class UsersService {
     if (!user) {
       throw new NotFoundException(`User #${document} not found`);
     }
+    delete user.password;
     return user;
   }
 
-  findByEmail(email: string){
-    return this.userRepo.findOne({ where: { email } });
+  async findByEmail(email: string) {
+    const user = await this.userRepo.findOne({ where: { email } })
+    return user;
   }
 
   async create(data: CreateUserRequest) {
     const newUser = this.userRepo.create(data);
     const hashPassword = await bcrypt.hash(newUser.password, 10);
     newUser.password = hashPassword;
-    return this.userRepo.save(newUser);
+    const user = await this.userRepo.save(newUser);
+    delete user.password;
+    return user;
   }
 
   async update(document: string, changes: UpdateUserRequest) {
-    const user = await this.findOne(document);
-    this.userRepo.merge(user, changes);
-    return this.userRepo.save(user);
+    const newUser = await this.findOne(document);
+    this.userRepo.merge(newUser, changes);
+    const user = await this.userRepo.save(newUser);;
+    delete user.password;
+    return user;
   }
 
-  remove(document: string) {
-    return this.userRepo.delete(document);
+  async remove(document: string) {
+    const result = await this.userRepo.delete(document)
+    if(result.affected > 0){
+      return {
+        statusCode: "200",
+        message: `User with document ${document} was deleted`
+      };
+    }
+    throw new NotFoundException(`User ${document} didn't change`) ;
   }
 }
