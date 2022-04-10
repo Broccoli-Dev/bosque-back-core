@@ -10,10 +10,10 @@ import { User } from '../../entities/user.entity';
 @UseGuards(AuthGuard('local'))
 @Controller('auth')
 export class AuthController {
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService) {}
   @UseGuards(AuthGuard('local'))
   @Post('login')
   login(@Req() req: Request) {
-    return this.authService.generateJWT( req.user as User );
+    return req.user as User;
   }
 }

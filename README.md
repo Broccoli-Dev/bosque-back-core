@@ -3,7 +3,9 @@
 ## Code Description
 
 This is a BackEnd of the hamburguer place "El Bosque", It is softwere like POS system.
+
 ## Nest Description
+
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 # Installation
@@ -53,6 +55,7 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 Nest is [MIT licensed](LICENSE).
 
 # Comandos Docker
+
 ```bash
 #
 $ docker-compose up -d PROCESS_NAME
@@ -79,4 +82,3 @@ $ docker-compose ps
 #
 $ docker-compose down
 ```
-

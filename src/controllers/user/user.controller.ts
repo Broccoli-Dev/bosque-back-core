@@ -10,7 +10,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { Public } from 'src/auth/decorators/public.decorator';
-import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import {
   CreateUserRequest,
   UpdateUserRequest,
@@ -20,7 +19,6 @@ import { ApiKeyGuard } from '../../auth/guards/api-key.guard';
 import { UsersService } from '../../services/user/user.service';
 
 @UseGuards(ApiKeyGuard)
-@UseGuards(JwtAuthGuard)
 @Controller('user')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
